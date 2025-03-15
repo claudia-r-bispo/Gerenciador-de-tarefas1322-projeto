@@ -1,6 +1,23 @@
 package br.com.ada.t1322.tecnicasprogramacao.projeto.model;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Task {
+
+    private Long id;
+    private String title;
+    private String description;
+    private LocalDate deadline;
+    private Status status;
+
+    public Task(Long id, String title, String description, LocalDate deadline, Status status) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
+        this.status = status;
+    }
 
     public enum Status {
         PENDENTE("Pendente"),
@@ -16,5 +33,75 @@ public class Task {
         public String getDescricao() {
             return descricao;
         }
+
+        public static Status fromString(String status) {
+            for (Status s : values()) {
+                if (s.descricao.equalsIgnoreCase(status)) {
+                    return s;
+                }
+            }
+            throw new IllegalArgumentException("Status inválido: " + status);
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "📌 Tarefa #%d%nTítulo: %s%nDescrição: %s%n📅 Prazo: %s%n🔄 Status: %s%n",
+                id, title, description, deadline, status.getDescricao()
+        );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
