@@ -8,21 +8,25 @@ import br.com.ada.t1322.tecnicasprogramacao.projeto.service.TaskComparators;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class ListTasksCommand implements Command {
+public class FilterTasksByCustomPredicateCommand implements Command {
 
     private final View view;
     private final TaskController taskController;
 
-    public ListTasksCommand(View view, TaskController taskController) {
+    public FilterTasksByCustomPredicateCommand(View view, TaskController taskController) {
         this.view = view;
         this.taskController = taskController;
     }
 
     @Override
     public void execute() {
+        String keyword = view.getInput("🔎 Digite uma palavra-chave para buscar no título ou descrição");
         Optional<Comparator<Task>> orderBy = getSortingMethod();
-        List<Task> tasks = taskController.getAllTasks(orderBy);
+
+        Predicate<Task> predicate = task -> task.getTitle().contains(keyword) || task.getDescription().contains(keyword);
+        List<Task> tasks = taskController.getTasksBy(predicate, orderBy);
 
         if (tasks.isEmpty()) {
             view.showMessage("📭 Nenhuma tarefa encontrada.");

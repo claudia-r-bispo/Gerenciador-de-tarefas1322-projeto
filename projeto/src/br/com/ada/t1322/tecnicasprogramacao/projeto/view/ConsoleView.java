@@ -1,6 +1,6 @@
 package br.com.ada.t1322.tecnicasprogramacao.projeto.view;
 
-public class ConsoleView implements IView {
+public class ConsoleView implements View {
 
     @Override
     public void showMessage(String message) {
@@ -14,7 +14,7 @@ public class ConsoleView implements IView {
     }
 
     @Override
-    public int getIntInput(String prompt) {
+    public Integer getIntInput(String prompt) {
         System.out.print(prompt + ": ");
         return InputReader.readInt();
     }
