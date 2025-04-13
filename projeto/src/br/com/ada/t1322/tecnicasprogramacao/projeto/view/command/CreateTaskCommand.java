@@ -3,6 +3,7 @@ package br.com.ada.t1322.tecnicasprogramacao.projeto.view.command;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.controller.TaskController;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.model.Task;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.view.View;
+import br.com.ada.t1322.tecnicasprogramacao.projeto.view.StatusViewHelper;
 
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class CreateTaskCommand implements Command {
         String title = view.getInput("📌 Informe o título da tarefa");
         String description = view.getInput("📝 Informe a descrição (opcional)");
         String deadline = view.getInput("📅 Informe a data limite (DD/MM/YYYY)");
-        String statusStr = view.getInput("🔄 Informe o status (Pendente, Em andamento, Concluído) (ou deixe em branco para 'Pendente')");
+        String statusStr = view.getInput("🔄 Informe o status " + StatusViewHelper.getTaskAvailableStatus() + " (ou deixe em branco para 'Pendente')");
 
         try {
             Task.Status status = Optional.ofNullable(statusStr)

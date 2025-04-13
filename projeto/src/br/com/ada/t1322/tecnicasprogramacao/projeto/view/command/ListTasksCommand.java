@@ -27,7 +27,7 @@ public class ListTasksCommand implements Command {
         if (tasks.isEmpty()) {
             view.showMessage("📭 Nenhuma tarefa encontrada.");
         } else {
-            tasks.forEach(task -> view.showMessage(task.toString()));
+            tasks.forEach(task -> view.showMessage(task.toString("dd/MM/yyyy")));
         }
     }
 
