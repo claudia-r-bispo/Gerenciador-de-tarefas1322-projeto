@@ -2,6 +2,7 @@ package br.com.ada.t1322.tecnicasprogramacao.projeto.controller;
 
 import br.com.ada.t1322.tecnicasprogramacao.projeto.model.Task;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.service.TaskService;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,6 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@Controller
 public class TaskControllerImpl extends AbstractTaskController {
 
     private static final int TAMANHO_MINIMO_TITULO = 3;

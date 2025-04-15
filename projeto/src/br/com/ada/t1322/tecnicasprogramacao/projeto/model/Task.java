@@ -1,24 +1,24 @@
 package br.com.ada.t1322.tecnicasprogramacao.projeto.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+@Entity
+@Table(name = "TAREFAS")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String title;
     private String description;
     private LocalDate deadline;
     private Status status;
-
-    public Task(Long id, String title, String description, LocalDate deadline, Status status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.deadline = deadline;
-        this.status = status;
-    }
 
     public enum Status {
         PENDENTE("Pendente"),

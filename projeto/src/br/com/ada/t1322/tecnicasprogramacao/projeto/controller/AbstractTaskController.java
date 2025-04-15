@@ -3,6 +3,7 @@ package br.com.ada.t1322.tecnicasprogramacao.projeto.controller;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.dto.TaskUpdateRequest;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.model.Task;
 import br.com.ada.t1322.tecnicasprogramacao.projeto.service.TaskService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@Service
 public abstract class AbstractTaskController implements TaskController {
 
     private final static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");

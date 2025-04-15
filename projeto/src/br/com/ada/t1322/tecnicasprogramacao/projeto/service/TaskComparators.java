@@ -1,9 +1,11 @@
 package br.com.ada.t1322.tecnicasprogramacao.projeto.service;
 
 import br.com.ada.t1322.tecnicasprogramacao.projeto.model.Task;
+import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 
+@Service
 public class TaskComparators {
 
     public static final Comparator<Task> BY_DEADLINE = Comparator.comparing(Task::getDeadline);
